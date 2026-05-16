@@ -2417,7 +2417,7 @@ const designPortfolio = [
 			flex-direction: row;
 			flex-wrap: wrap;
 			padding: 18px 16px;
-			transition: padding 180ms ease;
+			transition: padding 240ms ease, transform 240ms ease;
 		}
 
 		.site-header.scrolling-down {
@@ -2431,15 +2431,17 @@ const designPortfolio = [
 			flex-wrap: wrap;
 			gap: 12px;
 			font-size: 0.9rem;
-			transition: opacity 180ms ease, transform 180ms ease, max-height 180ms ease;
+			max-height: 220px;
+			opacity: 1;
+			transform: translateY(0);
+			transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease;
+			overflow: hidden;
 		}
 
 		.site-header.scrolling-down .nav-links {
-			display: none;
 			opacity: 0;
 			transform: translateY(-8px);
 			max-height: 0;
-			overflow: hidden;
 			pointer-events: none;
 		}
 
