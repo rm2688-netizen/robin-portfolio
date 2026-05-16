@@ -2430,19 +2430,39 @@ const designPortfolio = [
 			justify-content: flex-start;
 			flex-wrap: wrap;
 			gap: 12px;
-			font-size: 0.9rem;
-			max-height: 220px;
 			opacity: 1;
 			transform: translateY(0);
+			max-height: 220px;
 			transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease;
 			overflow: hidden;
 		}
 
-		.site-header.scrolling-down .nav-links {
+		.theme-toggle {
+			width: 54px;
+			height: 30px;
+			margin-left: auto;
+			flex: 0 0 auto;
+			opacity: 1;
+			transform: translateY(0);
+			max-height: 40px;
+			transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease;
+			overflow: hidden;
+		}
+
+		.site-header.scrolling-down .nav-links,
+		.site-header.scrolling-down .theme-toggle {
 			opacity: 0;
-			transform: translateY(-8px);
+			transform: translateY(-10px);
 			max-height: 0;
 			pointer-events: none;
+		}
+
+		.site-header:not(.scrolling-down) .nav-links {
+			transition-delay: 80ms, 80ms, 80ms;
+		}
+
+		.site-header:not(.scrolling-down) .theme-toggle {
+			transition-delay: 140ms, 140ms, 140ms;
 		}
 
 		.hero,
