@@ -373,10 +373,15 @@ const designPortfolio = [
 					<h2 id="experience-title">Work experience across design, quality, and manufacturing.</h2>
 				</div>
 
-				<div class="experience-list">
+				<div class="experience-list" data-experience-carousel>
 					{
-						experience.map((role) => (
-							<article class="experience-card">
+						experience.map((role, index) => (
+							<article
+								class={`experience-card experience-card-panel ${index === 0 ? "is-active" : ""}`}
+								data-experience-card
+								data-index={index}
+								aria-hidden={index === 0 ? "false" : "true"}
+							>
 								<div class="experience-meta">
 									<span>{role.period}</span>
 									<span>{role.location}</span>
@@ -391,6 +396,28 @@ const designPortfolio = [
 							</article>
 						))
 					}
+				</div>
+				<div class="experience-controls" aria-label="Experience navigation">
+					<button class="experience-nav-button" type="button" data-experience-prev aria-label="Previous role">
+						<span aria-hidden="true">←</span>
+					</button>
+					<div class="experience-dots" aria-label="Jump to role">
+						{
+							experience.map((role, index) => (
+								<button
+									class={`experience-dot ${index === 0 ? "is-active" : ""}`}
+									type="button"
+									data-experience-dot
+									data-index={index}
+									aria-label={`Go to role ${index + 1}: ${role.title}`}
+									aria-current={index === 0 ? "true" : "false"}
+								></button>
+							))
+						}
+					</div>
+					<button class="experience-nav-button" type="button" data-experience-next aria-label="Next role">
+						<span aria-hidden="true">→</span>
+					</button>
 				</div>
 			</section>
 
@@ -618,6 +645,11 @@ const designPortfolio = [
 			const projectPreviewType = document.querySelector("#project-preview-type");
 			const projectPreviewDescription = document.querySelector("#project-preview-description");
 			const projectPreviewTools = document.querySelector("#project-preview-tools");
+			const experienceCarousel = document.querySelector("[data-experience-carousel]");
+			const experienceCards = Array.from(document.querySelectorAll("[data-experience-card]"));
+			const experiencePrevButton = document.querySelector("[data-experience-prev]");
+			const experienceNextButton = document.querySelector("[data-experience-next]");
+			const experienceDots = Array.from(document.querySelectorAll("[data-experience-dot]"));
 
 			const setTheme = (theme) => {
 				document.documentElement.dataset.theme = theme;
@@ -805,6 +837,56 @@ const designPortfolio = [
 				} else {
 					window.addEventListener("resize", resizeCanvas);
 				}
+			}
+
+			if (experienceCarousel && experienceCards.length > 0) {
+				let activeIndex = experienceCards.findIndex((card) => card.classList.contains("is-active"));
+				if (activeIndex < 0) activeIndex = 0;
+
+				const setActiveExperience = (nextIndex, direction = "next") => {
+					if (nextIndex === activeIndex) return;
+
+					const previousCard = experienceCards[activeIndex];
+					const nextCard = experienceCards[nextIndex];
+					if (!(previousCard instanceof HTMLElement) || !(nextCard instanceof HTMLElement)) return;
+
+					previousCard.classList.remove("is-active");
+					previousCard.setAttribute("aria-hidden", "true");
+					nextCard.classList.remove("enter-from-next", "enter-from-prev");
+					nextCard.classList.add(direction === "prev" ? "enter-from-prev" : "enter-from-next");
+					nextCard.setAttribute("aria-hidden", "false");
+
+					requestAnimationFrame(() => {
+						nextCard.classList.add("is-active");
+						nextCard.classList.remove("enter-from-next", "enter-from-prev");
+					});
+
+					experienceDots.forEach((dot, index) => {
+						const isCurrent = index === nextIndex;
+						dot.classList.toggle("is-active", isCurrent);
+						dot.setAttribute("aria-current", isCurrent ? "true" : "false");
+					});
+
+					activeIndex = nextIndex;
+				};
+
+				experiencePrevButton?.addEventListener("click", () => {
+					const nextIndex =
+						(activeIndex - 1 + experienceCards.length) % experienceCards.length;
+					setActiveExperience(nextIndex, "prev");
+				});
+
+				experienceNextButton?.addEventListener("click", () => {
+					const nextIndex = (activeIndex + 1) % experienceCards.length;
+					setActiveExperience(nextIndex, "next");
+				});
+
+				experienceDots.forEach((dot, index) => {
+					dot.addEventListener("click", () => {
+						const direction = index < activeIndex ? "prev" : "next";
+						setActiveExperience(index, direction);
+					});
+				});
 			}
 
 			document.querySelectorAll(".project-postcard").forEach((button) => {
@@ -1299,10 +1381,24 @@ const designPortfolio = [
 				135deg,
 				color-mix(in srgb, var(--surface) 92%, var(--background)),
 				color-mix(in srgb, var(--surface) 72%, transparent)
-			);
+		);
 		border: 1px solid var(--line);
 		border-radius: 6px;
 		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			transform 180ms ease;
+	}
+
+	.about-portrait:hover {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow:
+			0 22px 52px color-mix(in srgb, var(--text) 12%, transparent),
+			0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+		transform: translateY(-2px);
 	}
 
 	.about-portrait::after {
@@ -1391,7 +1487,7 @@ const designPortfolio = [
 
 	.resume-card,
 	.certifications-card {
-		max-width: 860px;
+		width: 100%;
 		padding: 28px;
 		background: color-mix(in srgb, var(--surface) 72%, transparent);
 		border: 1px solid var(--line);
@@ -1551,6 +1647,31 @@ const designPortfolio = [
 	.experience-list {
 		display: grid;
 		gap: 12px;
+		margin-bottom: 14px;
+	}
+
+	.experience-card-panel {
+		grid-area: 1 / 1;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateX(0);
+		transition:
+			opacity 320ms ease,
+			transform 320ms ease;
+	}
+
+	.experience-card-panel.enter-from-next {
+		transform: translateX(34px);
+	}
+
+	.experience-card-panel.enter-from-prev {
+		transform: translateX(-34px);
+	}
+
+	.experience-card-panel.is-active {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateX(0);
 	}
 
 	.experience-card {
@@ -1589,8 +1710,6 @@ const designPortfolio = [
 	.experience-card:hover {
 		background: color-mix(in srgb, var(--surface) 88%, var(--background));
 		border-color: var(--accent);
-		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
-		transform: translateY(-2px);
 	}
 
 	.experience-card:hover::after {
@@ -1624,6 +1743,76 @@ const designPortfolio = [
 		margin: 0;
 		padding-left: 18px;
 		color: var(--muted);
+	}
+
+	.experience-controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+	}
+
+	.experience-nav-button {
+		width: 38px;
+		height: 38px;
+		display: inline-grid;
+		place-items: center;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--accent-dark);
+		font: inherit;
+		font-size: 0.98rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.experience-nav-button:hover,
+	.experience-nav-button:focus-visible {
+		background: var(--inverse);
+		border-color: var(--inverse);
+		color: var(--inverse-text);
+		transform: translateY(-1px);
+		outline: 0;
+	}
+
+	.experience-dots {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.experience-dot {
+		width: 8px;
+		height: 8px;
+		padding: 0;
+		border: 0;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--line) 88%, var(--accent));
+		cursor: pointer;
+		transition:
+			transform 180ms ease,
+			background 180ms ease,
+			opacity 180ms ease;
+		opacity: 0.85;
+	}
+
+	.experience-dot:hover,
+	.experience-dot:focus-visible {
+		background: color-mix(in srgb, var(--accent) 60%, var(--line));
+		transform: scale(1.1);
+		outline: 0;
+	}
+
+	.experience-dot.is-active {
+		width: 18px;
+		background: var(--accent);
+		opacity: 1;
 	}
 
 	.design-heading {
