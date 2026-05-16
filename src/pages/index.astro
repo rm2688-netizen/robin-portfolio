@@ -1,5 +1,259 @@
 ---
+const projects = [
+	{
+		title: "Fluid Flow Simulation of a Formula SAE Car",
+		type: "CFD Study",
+		description:
+			"Fluid dynamics simulation of a Formula SAE car focused on mesh sensitivity analysis and turbulence model comparison. The project explored how computational modeling can help evaluate aerodynamic behavior and inform design decisions.",
+		tools: "CFD / Turbulence Models / Mesh Sensitivity",
+	},
+	{
+		title: "Noise Reduction of Nose Wheel Landing Gear",
+		type: "Aerospace Analysis",
+		description:
+			"Designed and modeled a dielectric barrier discharge plasma actuator to reduce noise and drag around a Boeing 777 nose landing gear. The work used CATIA-V5 for modeling and ANSYS to study airflow behavior with the actuator active.",
+		tools: "CATIA-V5 / ANSYS / Flow Simulation",
+	},
+	{
+		title: "Improving the Power Rating of a Two-Stage Gear Reducer",
+		type: "Mechanical Design",
+		description:
+			"Improved a compound helical gear reduction system by studying pressure angle, helix angle, and related design parameters to increase power rating while maintaining mechanical design constraints.",
+		tools: "Gear Design / Mechanical Systems",
+	},
+	{
+		title: "Robotic Fruit Picker",
+		type: "Prototype",
+		description:
+			"Designed and built a working robotic arm prototype through the Jed-I Gifted Engineering Program. The prototype used RGB color sensing and basic Arduino/Python programming to identify and pick oranges.",
+		tools: "Arduino / Python / RGB Sensors",
+	},
+	{
+		title: "3D Printing RC Car",
+		type: "Product Build",
+		description:
+			"Collaborated on a group project to model and fabricate an RC car using Fusion 360 and Inventor, then produced components through Prusa i3, Markforged, and Formlabs additive manufacturing workflows.",
+		tools: "Fusion 360 / Inventor / Additive Manufacturing",
+	},
+	{
+		title: "Smart Medical Arm/Wrist Band",
+		type: "Design Event",
+		description:
+			"Designed and prototyped a smart arm and wrist band concept for a healthcare design event with Rochester Regional Health and Al Sigl Center, focused on helping patients stay connected to medical assistive devices.",
+		tools: "Product Design / Prototyping",
+	},
+];
 
+const experience = [
+	{
+		period: "Jan. 2026 - Present",
+		title: "Mechanical R&D Engineer",
+		company: "Hitachi Energy USA, Inc.",
+		location: "Jefferson City, MO",
+		highlights: [
+			"Design and model mechanical components for liquid immersed distribution transformers using advanced CAD tools.",
+			"Coordinate prototype development, testing, and measurements to improve product designs.",
+			"Prepare manufacturing and supplier drawings while supporting cost-reduction work, design portfolio enhancements, and supplier collaboration.",
+		],
+	},
+	{
+		period: "July 2025 - Jan. 2026",
+		title: "Product Design Engineer",
+		company: "B&G Industries Inc.",
+		location: "Watertown, SD",
+		highlights: [
+			"Design custom utility truck bodies in SolidWorks with sheet metal and weldment practices, customer specifications, and manufacturability in mind.",
+			"Lead cross-functional collaboration with manufacturing and quality teams to improve design accuracy and product lifecycle support.",
+			"Develop 3D CAD models, technical drawings, BOMs, PDM-managed documentation, wiring harnesses, fixtures, jigs, and tooling.",
+		],
+	},
+	{
+		period: "Apr. 2025 - July 2025",
+		title: "Quality Checking Engineer",
+		company: "Caterpillar Inc.",
+		location: "Rapid City, SD",
+		highlights: [
+			"Reviewed engineering drawings for ASME Y14.5 and ISO 9001 alignment, improving drawing accuracy and reducing errors by 15%.",
+			"Applied GD&T, tolerance stack-up analysis, and mechanical design practices to identify drawing improvements.",
+			"Used CAD tools and drawing markup software to provide feedback and ensure design intent was met.",
+		],
+	},
+	{
+		period: "June 2024 - Feb. 2025",
+		title: "Mechanical Design Engineer I",
+		company: "Facility for Rare Isotope Beams, U.S. Department of Energy",
+		location: "East Lansing, MI",
+		highlights: [
+			"Created detailed technical drawings with precise GD&T, improving manufacturability and reducing production errors by 20%.",
+			"Supported fabrication, assembly, and commissioning for critical heavy-ion linear accelerator cryogenics systems.",
+			"Developed CAD concepts for linear accelerator systems, cryomodules, and coldmasses while reviewing layouts and project documentation.",
+		],
+	},
+	{
+		period: "June 2023 - Dec. 2023",
+		title: "Product Mechanical Engineer",
+		company: "The Raymond Corporation, Toyota Industries Corporation",
+		location: "Greene, NY",
+		highlights: [
+			"Performed GD&T, tolerance stack-up analysis, Creo design modifications, drawing reviews, RFQs, BOM revisions, and ECR submissions.",
+			"Resolved issues across mechanical, electrical, hydraulic, and transmission systems, contributing to a 25% reduction in downtime.",
+			"Investigated design changes that reduced annual product cost by $43K and supported warranty-claim reduction.",
+		],
+	},
+	{
+		period: "Jan. 2024 - May 2024",
+		title: "Graduate Teaching Assistant",
+		company: "Rochester Institute of Technology",
+		location: "Rochester, NY",
+		highlights: [
+			"Led tutorials and experimental lab sessions for more than 100 undergraduate students in Strength of Materials and Engineering Design Tools.",
+			"Reinforced theoretical principles through lab measurements and data analysis using PASCO, MATLAB, and Excel.",
+		],
+	},
+	{
+		period: "Aug. 2021 - Nov. 2021",
+		title: "Aerospace Technical Publication Specialist",
+		company: "Aerotics Technologies",
+		location: "Bangalore, India",
+		highlights: [
+			"Worked with aerospace technical publication standards including ATA-100, iSpec 2200, S1000D, and ASD-STE.",
+			"Revised more than 50 maintenance manuals, including AMM, CMM, SRM, AIPC, and SB documentation.",
+		],
+	},
+	{
+		period: "July 2019 - Aug. 2019",
+		title: "Mechanical Design Engineer Intern",
+		company: "Aerodesign Solutions Pvt. Ltd.",
+		location: "Bangalore, India",
+		highlights: [
+			"Completed training in aircraft design research methods and technologies.",
+			"Designed and modeled nose wheel landing gear for a Bombardier CRJ-200 aircraft using CATIA-V5.",
+		],
+	},
+];
+
+const skills = [
+	{ name: "Mechanical design", mark: "ME" },
+	{ name: "CAD modeling", mark: "3D" },
+	{ name: "GD&T", mark: "GD" },
+	{ name: "DFMA", mark: "DF" },
+	{ name: "FMEA", mark: "FM" },
+	{ name: "RCA", mark: "RC" },
+	{ name: "FEA", mark: "FE" },
+	{ name: "SolidWorks", mark: "SW" },
+	{ name: "Creo", mark: "CR" },
+	{ name: "CATIA", mark: "V5" },
+	{ name: "ANSYS", mark: "AX" },
+	{ name: "MATLAB", mark: "ML" },
+	{ name: "Python", mark: "PY" },
+	{ name: "Navisworks", mark: "NW" },
+	{ name: "HTML", mark: "</>" },
+	{ name: "SQL", mark: "DB" },
+];
+
+const certifications = [
+	{
+		title: "Engineer in Training",
+		credential: "EIT",
+		issuer: "Engineering licensure foundation",
+		focus: "Professional engineering pathway",
+		detail:
+			"Foundational engineering credential that signals preparation for the professional engineering licensure track.",
+	},
+	{
+		title: "Certified SolidWorks Professional",
+		credential: "CSWP",
+		issuer: "Dassault Systemes SolidWorks",
+		focus: "Advanced CAD modeling",
+		detail:
+			"Professional-level SolidWorks certification focused on modeling fluency, design intent, assemblies, and applied CAD problem solving.",
+	},
+	{
+		title: "GD&T and Tolerance Stacks",
+		credential: "ASME Y14.5",
+		issuer: "ASME standard practice",
+		focus: "Drawing quality and design intent",
+		detail:
+			"Training in geometric dimensioning and tolerancing, tolerance stack analysis, and clear communication of manufacturing requirements.",
+	},
+	{
+		title: "Lean Six Sigma Yellow Belt",
+		credential: "CSSC",
+		issuer: "Council for Six Sigma Certification",
+		focus: "Continuous improvement",
+		detail:
+			"Process improvement credential focused on waste reduction, structured problem solving, and practical quality methods.",
+	},
+	{
+		title: "Aerospace Materials",
+		credential: "Materials",
+		issuer: "Aerospace coursework",
+		focus: "Material selection and behavior",
+		detail:
+			"Credentialed study of aerospace material properties, selection tradeoffs, and performance considerations.",
+	},
+	{
+		title: "Product Design",
+		credential: "CADD Centre",
+		issuer: "CADD Centre",
+		focus: "CAD and product development",
+		detail:
+			"Product design credential covering CAD-driven design workflows, practical modeling, and design documentation.",
+	},
+];
+
+const socialLinks = {
+	linkedin: "https://www.linkedin.com/in/robinbmiranda/",
+	github: "https://github.com/YOUR-GITHUB-USERNAME",
+};
+
+const resumeHref = encodeURI("/Robin Miranda - Resume.pdf");
+const profileImage = encodeURI("/images/profile picture.png");
+
+const designPortfolio = [
+	{
+		title: "Engine Render",
+		label: "Mechanical Render",
+		description: "A detailed CAD rendering with clean component visibility and balanced presentation.",
+		src: encodeURI("/images/Design portfolio/Engine_edited.jpg"),
+		alt: "Detailed engine CAD rendering",
+	},
+	{
+		title: "Piston Assembly",
+		label: "Mechanical System",
+		description: "Assembly-focused rendering that shows fit, structure, and component clarity.",
+		src: encodeURI("/images/Design portfolio/Piston Assembly_edited.jpg"),
+		alt: "Piston assembly CAD rendering",
+	},
+	{
+		title: "Pumpkin Lamp",
+		label: "Surface Study",
+		description: "Organic-form CAD model selected to demonstrate curvature control and clean surface intent.",
+		src: encodeURI("/images/Design portfolio/Pumpkin_edited.jpg"),
+		alt: "Pumpkin Lamp concept rendering",
+	},
+	{
+		title: "Wheel Rim Study",
+		label: "Form Study",
+		description: "A clean surface study with strong silhouette and controlled geometry.",
+		src: encodeURI("/images/Design portfolio/Rim_edited.jpg"),
+		alt: "Wheel rim CAD rendering",
+	},
+	{
+		title: "PC Fan Housing",
+		label: "Component Design",
+		description: "Compact product rendering selected for precision, proportion, and manufacturable detail.",
+		src: encodeURI("/images/Design portfolio/PC Fan_edited_edited.jpg"),
+		alt: "PC fan CAD rendering",
+	},
+	{
+		title: "Apple Watch Concept",
+		label: "Product Design",
+		description: "Consumer-product concept study centered on proportion, edge transitions, and polished surface finish.",
+		src: encodeURI("/images/Design portfolio/Apple Watch_edited.png"),
+		alt: "Apple Watch CAD concept rendering",
+	},
+];
 ---
 
 <html lang="en">
@@ -9,9 +263,1804 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta
+			name="description"
+			content="A minimal personal portfolio template featuring selected work, skills, resume, and contact information."
+		/>
+		<title>Minimal Portfolio</title>
+		<script is:inline>
+			try {
+				const savedTheme = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? "dark" : "light");
+			} catch {
+				document.documentElement.dataset.theme = "light";
+			}
+		</script>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<header class="site-header">
+			<a class="wordmark" href="#top" aria-label="Portfolio home">
+				<span>Robin Miranda</span>
+				<svg class="tesseract-mark" viewBox="0 0 40 40" aria-hidden="true">
+					<g class="tesseract-shell">
+						<path d="M8 11h18v18H8z"></path>
+						<path d="M14 5h18v18H14z"></path>
+						<path d="M8 11 14 5M26 11l6-6M26 29l6-6M8 29l6-6"></path>
+					</g>
+					<g class="tesseract-core">
+						<path d="M14 16h12v12H14z"></path>
+						<path d="M18 12h12v12H18z"></path>
+						<path d="M14 16l4-4M26 16l4-4M26 28l4-4M14 28l4-4"></path>
+					</g>
+				</svg>
+			</a>
+			<nav class="nav-links" aria-label="Main navigation">
+				<a href="#about">About</a>
+				<a href="#experience">Experience</a>
+				<a href="#projects">Projects</a>
+				<a href="#skills">Skills</a>
+				<a href="#design">Design</a>
+				<a href="#certifications">Certifications</a>
+				<a href="#resume">Resume</a>
+				<a href="#contact">Contact</a>
+			</nav>
+			<button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" data-theme-toggle>
+				<span class="theme-icon sun" aria-hidden="true">
+					<svg viewBox="0 0 24 24">
+						<circle cx="12" cy="12" r="4"></circle>
+						<path d="M12 2.5v2.5M12 19v2.5M21.5 12H19M5 12H2.5M18.72 5.28l-1.77 1.77M7.05 16.95l-1.77 1.77M18.72 18.72l-1.77-1.77M7.05 7.05 5.28 5.28"></path>
+					</svg>
+				</span>
+				<span class="theme-icon moon" aria-hidden="true">
+					<svg viewBox="0 0 24 24">
+						<path d="M20.2 14.15A8.5 8.5 0 1 1 9.85 3.8a7 7 0 1 0 10.35 10.35Z"></path>
+					</svg>
+				</span>
+				<span class="theme-thumb" aria-hidden="true"></span>
+			</button>
+		</header>
+
+		<main id="top">
+			<section class="hero" aria-labelledby="hero-title">
+				<p class="eyebrow">Personal Portfolio</p>
+				<h1 id="hero-title">
+					Engineering with clarity, curiosity, and intention.
+				</h1>
+				<p class="hero-copy">
+					I design complex mechanical systems, solve real-world problems, and build experiences that balance functionality with simplicity.
+				</p>
+				<div class="hero-actions" aria-label="Primary actions">
+					<a class="button primary" href="#experience">View experience</a>
+					<a class="button secondary" href="#contact">Get in touch</a>
+				</div>
+			</section>
+
+			<section class="section intro-grid about-layout" id="about" aria-labelledby="about-title">
+				<div class="about-portrait-column">
+					<figure class="about-portrait">
+						<img src={profileImage} alt="Portrait of Robin Miranda" loading="lazy" />
+						<figcaption>
+							<span class="about-greeting">Hi there!</span>
+							<span>It's me, Robin.</span>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="section-copy about-copy">
+					<p class="eyebrow">About</p>
+					<h2 id="about-title">Mechanical engineer focused on thoughtful design, manufacturable details, and better systems.</h2>
+					<p>
+						I work at the intersection of mechanical design, manufacturing, and analysis,
+						turning technical requirements into clear, buildable solutions. My background
+						includes CAD, GD&T, tolerance stack-up analysis, FEA, root cause analysis, lean
+						manufacturing, and continuous improvement.
+					</p>
+					<p>
+						I'm drawn to engineering work where precision and practicality have to meet:
+						designs that are clean on screen, sensible to manufacture, and easy for teams to
+						understand. Curiosity for science and technology keeps me moving, but useful,
+						well-communicated outcomes are what keep the work grounded.
+					</p>
+				</div>
+			</section>
+
+			<section class="section experience-section" id="experience" aria-labelledby="experience-title">
+				<div class="section-heading">
+					<p class="eyebrow">Experience</p>
+					<h2 id="experience-title">Work experience across design, quality, analysis, and manufacturing.</h2>
+				</div>
+
+				<div class="experience-list">
+					{
+						experience.map((role) => (
+							<article class="experience-card">
+								<div class="experience-meta">
+									<span>{role.period}</span>
+									<span>{role.location}</span>
+								</div>
+								<div>
+									<h3>{role.title}</h3>
+									<p class="experience-company">{role.company}</p>
+									<ul>
+										{role.highlights.map((highlight) => <li>{highlight}</li>)}
+									</ul>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="section projects-section" id="projects" aria-labelledby="projects-title">
+				<div class="section-heading">
+					<p class="eyebrow">Projects</p>
+					<h2 id="projects-title">Engineering projects with practical design and analysis at the center.</h2>
+				</div>
+
+				<div class="project-postcard-grid">
+					{
+						projects.map((project) => (
+							<button
+								type="button"
+								class="project-postcard"
+								data-project-title={project.title}
+								data-project-type={project.type}
+								data-project-description={project.description}
+								data-project-tools={project.tools}
+								aria-haspopup="dialog"
+							>
+								<span>{project.title}</span>
+							</button>
+						))
+					}
+				</div>
+			</section>
+
+			<dialog class="project-dialog" id="project-dialog" aria-labelledby="project-preview-title">
+				<form method="dialog">
+					<button class="dialog-close" type="submit" aria-label="Close project details">Close</button>
+				</form>
+				<p class="eyebrow" id="project-preview-type">Project</p>
+				<h3 id="project-preview-title">Project title</h3>
+				<p id="project-preview-description">Project details will appear here.</p>
+				<p class="project-preview-tools" id="project-preview-tools">Tools</p>
+			</dialog>
+
+			<section class="section skills-section" id="skills" aria-labelledby="skills-title">
+				<div class="section-heading">
+					<p class="eyebrow">Skills</p>
+					<h2 id="skills-title">Capabilities that support clean, useful work.</h2>
+				</div>
+				<ul class="skills-list" aria-label="Skills and tools">
+					{
+						skills.map((skill) => (
+							<li>
+								<span class="skill-mark" aria-hidden="true">{skill.mark}</span>
+								<span class="skill-name">{skill.name}</span>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="section design-section" id="design" aria-labelledby="design-title">
+				<div class="section-heading design-heading">
+					<p class="eyebrow">Design</p>
+					<h2 id="design-title">A focused selection of CAD renderings.</h2>
+					<p class="design-intro">
+						This section draws from the design portfolio notes and showcases a tighter set of
+						mechanical renders chosen for clarity, finish, and professional presentation.
+					</p>
+				</div>
+
+				<div class="design-grid">
+					{
+						designPortfolio.map((item) => (
+							<button
+								type="button"
+								class="design-item"
+								data-design-title={item.title}
+								data-design-label={item.label}
+								data-design-description={item.description}
+								data-design-src={item.src}
+								data-design-alt={item.alt}
+								aria-haspopup="dialog"
+							>
+								<span class="design-label">{item.label}</span>
+								<strong>{item.title}</strong>
+								<span class="design-description">{item.description}</span>
+								<span class="design-action">View render</span>
+							</button>
+						))
+					}
+				</div>
+			</section>
+
+			<dialog class="design-dialog" id="design-dialog" aria-labelledby="design-preview-title">
+				<form method="dialog">
+					<button class="dialog-close" type="submit" aria-label="Close design preview">Close</button>
+				</form>
+				<div class="design-preview-copy">
+					<p class="eyebrow" id="design-preview-label">Design Preview</p>
+					<h3 id="design-preview-title">Design title</h3>
+					<p id="design-preview-description">Design details will appear here.</p>
+				</div>
+				<div class="design-preview-frame">
+					<img id="design-preview-image" alt="" />
+				</div>
+			</dialog>
+
+			<section class="section certifications-section" id="certifications" aria-labelledby="certifications-title">
+				<div class="section-heading">
+					<p class="eyebrow">Certifications</p>
+					<h2 id="certifications-title">Credentials with practical engineering weight.</h2>
+				</div>
+				<article class="certifications-card">
+					<div class="certification-list" aria-label="Certifications">
+						{
+							certifications.map((certification, index) => (
+								<button
+									type="button"
+									class="certification-item"
+									data-cert-title={certification.title}
+									data-cert-credential={certification.credential}
+									data-cert-issuer={certification.issuer}
+									data-cert-focus={certification.focus}
+									data-cert-detail={certification.detail}
+									aria-haspopup="dialog"
+								>
+									<span class="certification-index">{String(index + 1).padStart(2, "0")}</span>
+									<span class="certification-content">
+										<em>{certification.credential}</em>
+										<strong>{certification.title}</strong>
+										<small>{certification.focus}</small>
+									</span>
+								</button>
+							))
+						}
+					</div>
+				</article>
+			</section>
+
+			<dialog class="credential-dialog" id="credential-dialog" aria-labelledby="credential-title">
+				<form method="dialog">
+					<button class="dialog-close" type="submit" aria-label="Close certification preview">Close</button>
+				</form>
+				<p class="eyebrow" id="credential-label">Certification Preview</p>
+				<h3 id="credential-title">Credential title</h3>
+				<p class="credential-meta" id="credential-meta">Issuer</p>
+				<div class="credential-preview" aria-label="Credential details">
+					<span id="credential-mark">EIT</span>
+					<p id="credential-focus">Credential focus</p>
+				</div>
+				<p id="credential-detail">
+					Credential details will appear here when a certification is selected.
+				</p>
+				<div class="dialog-actions">
+					<a class="button primary" href="#contact" data-request-permission>
+						Request download permission
+					</a>
+					<button class="button secondary" type="button" data-close-dialog>Close preview</button>
+				</div>
+			</dialog>
+
+			<section class="section resume-section" id="resume" aria-labelledby="resume-title">
+				<div class="section-heading">
+					<p class="eyebrow">Resume</p>
+					<h2 id="resume-title">A concise PDF version of my engineering background.</h2>
+				</div>
+				<article class="resume-card">
+					<p>
+						Download the resume for a detailed view of my experience, education, certifications,
+						and technical background.
+					</p>
+					<a class="button secondary" href={resumeHref} download>
+						Download resume
+					</a>
+				</article>
+			</section>
+
+			<section class="section contact-section" id="contact" aria-labelledby="contact-title">
+				<p class="eyebrow">Contact</p>
+				<h2 id="contact-title">Let's make the next useful thing feel clear.</h2>
+				<p>
+					Feel free to reach out if you have any questions or would like to connect!
+				</p>
+				<div class="contact-actions" aria-label="Contact links">
+					<a class="social-link email-link" href="mailto:rm2688@rit.edu" aria-label="Email Robin Miranda">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4.75 5.75h14.5c.96 0 1.75.79 1.75 1.75v9c0 .96-.79 1.75-1.75 1.75H4.75A1.75 1.75 0 0 1 3 16.5v-9c0-.96.79-1.75 1.75-1.75Zm.82 2.1 6.43 4.7 6.43-4.7H5.57Zm13.68 8.65V9.68l-6.63 4.84a1.04 1.04 0 0 1-1.24 0L4.75 9.68v6.82h14.5Z"></path>
+						</svg>
+					</a>
+					<a class="social-link" href={socialLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M6.94 8.98H3.86v10.2h3.08V8.98ZM5.42 4.82a1.78 1.78 0 1 0 0 3.56 1.78 1.78 0 0 0 0-3.56Zm5.26 4.16H7.74v10.2h3.08v-5.35c0-1.49.68-2.38 1.94-2.38 1.16 0 1.72.82 1.72 2.38v5.35h3.08v-6.1c0-2.88-1.54-4.37-3.72-4.37-1.58 0-2.5.86-3.02 1.67h-.14v-1.4Z"></path>
+						</svg>
+					</a>
+					<a class="social-link" href={socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub profile">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M12 2.75a9.25 9.25 0 0 0-2.92 18.03c.46.08.63-.2.63-.44v-1.6c-2.57.56-3.11-1.1-3.11-1.1-.42-1.07-1.03-1.35-1.03-1.35-.84-.57.06-.56.06-.56.93.07 1.42.96 1.42.96.82 1.4 2.15 1 2.68.77.08-.6.32-1 .58-1.23-2.05-.23-4.21-1.03-4.21-4.57 0-1.01.36-1.84.95-2.48-.1-.24-.41-1.18.09-2.45 0 0 .78-.25 2.54.95A8.75 8.75 0 0 1 12 5.37c.78 0 1.57.1 2.31.31 1.76-1.2 2.53-.95 2.53-.95.51 1.27.19 2.21.09 2.45.6.64.95 1.47.95 2.48 0 3.55-2.16 4.34-4.22 4.57.33.29.63.85.63 1.72v2.55c0 .24.17.52.64.43A9.25 9.25 0 0 0 12 2.75Z"></path>
+						</svg>
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© 2026 made with ❤ by Robin Miranda</p>
+			<div>
+				<a href="#top">Back to top</a>
+			</div>
+		</footer>
+
+		<script>
+			const dialog = document.querySelector("#credential-dialog");
+			const title = document.querySelector("#credential-title");
+			const meta = document.querySelector("#credential-meta");
+			const mark = document.querySelector("#credential-mark");
+			const focus = document.querySelector("#credential-focus");
+			const detail = document.querySelector("#credential-detail");
+			const requestLink = document.querySelector("[data-request-permission]");
+			const closeButton = document.querySelector("[data-close-dialog]");
+			const themeToggle = document.querySelector("[data-theme-toggle]");
+			const designDialog = document.querySelector("#design-dialog");
+			const designPreviewTitle = document.querySelector("#design-preview-title");
+			const designPreviewLabel = document.querySelector("#design-preview-label");
+			const designPreviewDescription = document.querySelector("#design-preview-description");
+			const designPreviewImage = document.querySelector("#design-preview-image");
+			const projectDialog = document.querySelector("#project-dialog");
+			const projectPreviewTitle = document.querySelector("#project-preview-title");
+			const projectPreviewType = document.querySelector("#project-preview-type");
+			const projectPreviewDescription = document.querySelector("#project-preview-description");
+			const projectPreviewTools = document.querySelector("#project-preview-tools");
+
+			const setTheme = (theme) => {
+				document.documentElement.dataset.theme = theme;
+				themeToggle?.setAttribute("aria-pressed", String(theme === "dark"));
+				try {
+					localStorage.setItem("theme", theme);
+				} catch {
+					// Ignore storage errors and keep the visual theme for this session.
+				}
+			};
+
+			themeToggle?.setAttribute(
+				"aria-pressed",
+				String(document.documentElement.dataset.theme === "dark"),
+			);
+
+			themeToggle?.addEventListener("click", () => {
+				const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+				setTheme(nextTheme);
+			});
+
+			document.querySelectorAll(".project-postcard").forEach((button) => {
+				button.addEventListener("click", () => {
+					if (!(projectDialog instanceof HTMLDialogElement)) return;
+
+					const projectTitle = button.dataset.projectTitle ?? "Project details";
+					const projectType = button.dataset.projectType ?? "Project";
+					const projectDescription =
+						button.dataset.projectDescription ?? "Project details are available on request.";
+					const projectTools = button.dataset.projectTools ?? "Tools available on request";
+
+					if (projectPreviewTitle) projectPreviewTitle.textContent = projectTitle;
+					if (projectPreviewType) projectPreviewType.textContent = projectType;
+					if (projectPreviewDescription) projectPreviewDescription.textContent = projectDescription;
+					if (projectPreviewTools) projectPreviewTools.textContent = projectTools;
+
+					projectDialog.showModal();
+				});
+			});
+
+			document.querySelectorAll(".design-item").forEach((button) => {
+				button.addEventListener("click", () => {
+					if (!(designDialog instanceof HTMLDialogElement)) return;
+
+					const designTitle = button.dataset.designTitle ?? "Design preview";
+					const designLabel = button.dataset.designLabel ?? "Design";
+					const designDescription =
+						button.dataset.designDescription ?? "Selected design portfolio render.";
+					const designSrc = button.dataset.designSrc ?? "";
+					const designAlt = button.dataset.designAlt ?? designTitle;
+
+					if (designPreviewTitle) designPreviewTitle.textContent = designTitle;
+					if (designPreviewLabel) designPreviewLabel.textContent = designLabel;
+					if (designPreviewDescription) designPreviewDescription.textContent = designDescription;
+					if (designPreviewImage instanceof HTMLImageElement) {
+						designPreviewImage.src = designSrc;
+						designPreviewImage.alt = designAlt;
+					}
+
+					designDialog.showModal();
+				});
+			});
+
+			document.querySelectorAll(".certification-item").forEach((button) => {
+				button.addEventListener("click", () => {
+					if (!(dialog instanceof HTMLDialogElement)) return;
+
+					const certTitle = button.dataset.certTitle ?? "Certification";
+					const credential = button.dataset.certCredential ?? "Credential";
+					const issuer = button.dataset.certIssuer ?? "Issuer available on request";
+					const certFocus = button.dataset.certFocus ?? "Credential details";
+					const certDetail =
+						button.dataset.certDetail ??
+						"Additional certificate details can be shared by the site owner on request.";
+
+					if (title) title.textContent = certTitle;
+					if (meta) meta.textContent = issuer;
+					if (mark) mark.textContent = credential;
+					if (focus) focus.textContent = certFocus;
+					if (detail) detail.textContent = certDetail;
+					if (requestLink instanceof HTMLAnchorElement) {
+						requestLink.href = "#contact";
+						requestLink.dataset.requestedCertificate = certTitle;
+						requestLink.setAttribute(
+							"aria-label",
+							`Request download permission for ${certTitle}`,
+						);
+					}
+
+					dialog.showModal();
+				});
+			});
+
+			closeButton?.addEventListener("click", () => {
+				if (dialog instanceof HTMLDialogElement) dialog.close();
+			});
+
+			requestLink?.addEventListener("click", () => {
+				if (dialog instanceof HTMLDialogElement) dialog.close();
+			});
+		</script>
 	</body>
 </html>
+
+<style>
+	:root {
+		color-scheme: light dark;
+		--background: #f4f0e8;
+		--surface: #fbf8f1;
+		--text: #211d18;
+		--muted: #6f6558;
+		--line: #d8cfc0;
+		--accent: #7d4f36;
+		--accent-dark: #4a2f24;
+		--inverse: #211d18;
+		--inverse-text: #fbf8f1;
+		--max-width: 1120px;
+		font-family:
+			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	:root[data-theme="dark"] {
+		--background: #191512;
+		--surface: #211c18;
+		--text: #f4efe6;
+		--muted: #b8ad9e;
+		--line: #3c332b;
+		--accent: #d6a984;
+		--accent-dark: #f0d4bd;
+		--inverse: #f4efe6;
+		--inverse-text: #191512;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		background: var(--background);
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		background: var(--background);
+		color: var(--accent-dark);
+		font-size: 16px;
+		line-height: 1.6;
+		transition:
+			background 180ms ease,
+			color 180ms ease;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	main,
+	.site-footer {
+		width: min(calc(100% - 40px), var(--max-width));
+		margin: 0 auto;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		width: 100%;
+		margin: 0;
+		padding: 22px max(20px, calc((100% - var(--max-width)) / 2));
+		background: color-mix(in srgb, var(--background) 92%, transparent);
+		backdrop-filter: blur(18px);
+		border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+	}
+
+	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.15rem;
+		font-weight: 600;
+	}
+
+	.tesseract-mark {
+		width: 30px;
+		height: 30px;
+		flex: 0 0 auto;
+		color: var(--accent-dark);
+		filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 38%, transparent));
+		overflow: visible;
+		animation: tesseract-spin 7s linear infinite;
+	}
+
+	.tesseract-mark path {
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.tesseract-core {
+		opacity: 0.72;
+		animation: tesseract-counterspin 4.8s linear infinite;
+		transform-origin: 20px 20px;
+	}
+
+	@keyframes tesseract-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes tesseract-counterspin {
+		from {
+			transform: rotate(360deg) scale(0.92);
+		}
+		to {
+			transform: rotate(0deg) scale(0.92);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tesseract-mark,
+		.tesseract-core {
+			animation: none;
+		}
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--muted);
+		font-size: 0.94rem;
+	}
+
+	.nav-links a {
+		padding: 8px 12px;
+		border-radius: 999px;
+		transition:
+			background 180ms ease,
+			color 180ms ease;
+	}
+
+	.nav-links a:hover,
+	.nav-links a:focus-visible {
+		background: var(--inverse);
+		color: var(--inverse-text);
+		outline: 0;
+	}
+
+	.site-footer a {
+		transition:
+			color 180ms ease,
+			border-color 180ms ease;
+	}
+
+	.site-footer a:hover {
+		color: var(--text);
+	}
+
+	.theme-toggle {
+		position: relative;
+		width: 54px;
+		height: 30px;
+		flex: 0 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		justify-items: center;
+		padding: 3px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		overflow: hidden;
+		cursor: pointer;
+	}
+
+	.theme-icon {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		place-items: center;
+		width: 16px;
+		height: 16px;
+		color: var(--muted);
+		opacity: 0.72;
+		transition:
+			color 180ms ease,
+			opacity 180ms ease;
+	}
+
+	.theme-icon svg {
+		width: 100%;
+		height: 100%;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.theme-icon.moon svg {
+		stroke-width: 1.9;
+	}
+
+	.theme-thumb {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		z-index: 0;
+		width: 22px;
+		height: 22px;
+		background: var(--inverse);
+		border-radius: 50%;
+		box-shadow: 0 2px 8px color-mix(in srgb, var(--text) 30%, transparent);
+		transition:
+			background 180ms ease,
+			transform 180ms ease;
+	}
+
+	.theme-toggle[aria-pressed="true"] .theme-thumb {
+		transform: translateX(24px);
+	}
+
+	.theme-toggle[aria-pressed="false"] .theme-icon.sun,
+	.theme-toggle[aria-pressed="true"] .theme-icon.moon {
+		color: var(--inverse-text);
+		opacity: 1;
+	}
+
+	.theme-toggle:hover,
+	.theme-toggle:focus-visible {
+		border-color: var(--accent);
+		outline: 0;
+	}
+
+	.hero {
+		min-height: 76vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 96px 0 72px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.eyebrow {
+		margin: 0 0 18px;
+		color: var(--accent);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin-top: 0;
+	}
+
+	h1,
+	h2,
+	h3 {
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 500;
+		line-height: 1.05;
+		letter-spacing: 0;
+	}
+
+	h1 {
+		max-width: 980px;
+		margin-bottom: 28px;
+		font-size: clamp(3.2rem, 9vw, 7.4rem);
+	}
+
+	h2 {
+		margin-bottom: 0;
+		font-size: clamp(2rem, 5vw, 4.35rem);
+	}
+
+	h3 {
+		margin-bottom: 0;
+		font-size: clamp(1.55rem, 2.8vw, 2.25rem);
+	}
+
+	.hero-copy {
+		max-width: 720px;
+		margin-bottom: 32px;
+		color: var(--muted);
+		font-size: clamp(1.08rem, 2vw, 1.35rem);
+		line-height: 1.7;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 46px;
+		padding: 12px 18px;
+		border: 1px solid var(--line);
+		border-radius: 4px;
+		font-size: 0.95rem;
+		font-weight: 700;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			color 180ms ease;
+	}
+
+	.button.primary {
+		background: var(--text);
+		border-color: var(--text);
+		color: var(--surface);
+	}
+
+	.button.primary:hover {
+		background: var(--accent-dark);
+		border-color: var(--accent-dark);
+	}
+
+	.button.secondary {
+		background: transparent;
+		color: var(--text);
+	}
+
+	.button.secondary:hover {
+		background: var(--surface);
+		border-color: var(--accent);
+	}
+
+	.section {
+		padding: 88px 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.intro-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: 56px;
+		align-items: start;
+	}
+
+	.about-layout {
+		grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+		align-items: center;
+		gap: 64px;
+	}
+
+	.about-portrait-column {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.about-portrait {
+		position: relative;
+		width: min(300px, 100%);
+		margin: 0;
+		padding: 10px;
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 8%, transparent);
+	}
+
+	.about-portrait::after {
+		content: "";
+		position: absolute;
+		inset: auto 18px 0;
+		height: 2px;
+		background: var(--accent);
+	}
+
+	.about-portrait img {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		display: block;
+		object-fit: cover;
+		border-radius: 4px;
+		filter: saturate(0.9) contrast(1.03);
+	}
+
+	.about-portrait figcaption {
+		display: grid;
+		gap: 2px;
+		margin-top: 12px;
+		padding: 0 2px 6px;
+		color: var(--accent-dark);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.04rem;
+		font-weight: 500;
+		letter-spacing: 0;
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.about-greeting {
+		color: var(--text);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(1.3rem, 2.4vw, 1.72rem);
+		font-weight: 500;
+		line-height: 1.05;
+	}
+
+	.about-copy {
+		max-width: 720px;
+	}
+
+	.about-copy h2 {
+		margin-bottom: 24px;
+		font-size: clamp(2rem, 4.2vw, 3.65rem);
+	}
+
+	.about-copy p:not(.eyebrow) {
+		margin-bottom: 18px;
+		color: var(--muted);
+		font-size: 1.08rem;
+		line-height: 1.75;
+	}
+
+	.resume-section {
+		padding-top: 96px;
+	}
+
+	.design-section {
+		padding-top: 74px;
+	}
+
+	.certifications-section {
+		padding-top: 74px;
+	}
+
+	.resume-card,
+	.certifications-card {
+		max-width: 860px;
+		padding: 28px;
+		background: color-mix(in srgb, var(--surface) 72%, transparent);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+	}
+
+	.resume-card {
+		position: relative;
+		overflow: hidden;
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.resume-card::after {
+		content: "";
+		position: absolute;
+		inset: auto 28px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.resume-card:hover {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		transform: translateY(-2px);
+	}
+
+	.resume-card:hover::after {
+		transform: scaleX(1);
+	}
+
+	.resume-card p,
+	.certifications-card p {
+		color: var(--muted);
+		font-size: 1.03rem;
+	}
+
+	.resume-card .button {
+		margin-top: 8px;
+	}
+
+	.project-postcard-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 12px;
+	}
+
+	.project-postcard {
+		position: relative;
+		min-height: 154px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		color: var(--text);
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		overflow: hidden;
+		font: inherit;
+		text-align: center;
+		cursor: pointer;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			transform 180ms ease;
+	}
+
+	.project-postcard::after {
+		content: "";
+		position: absolute;
+		inset: auto 20px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.project-postcard span {
+		font-family: inherit;
+		font-size: 1.04rem;
+		font-weight: 700;
+		line-height: 1.35;
+		max-width: 92%;
+	}
+
+	.project-postcard:hover,
+	.project-postcard:focus-visible {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		color: var(--text);
+		outline: 0;
+		transform: translateY(-2px);
+	}
+
+	.project-postcard:hover::after,
+	.project-postcard:focus-visible::after {
+		transform: scaleX(1);
+	}
+
+	.project-dialog {
+		width: min(calc(100% - 32px), 620px);
+		padding: 30px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		box-shadow: 0 24px 80px rgba(33, 29, 24, 0.2);
+		color: var(--text);
+		animation: dialog-in 180ms ease both;
+	}
+
+	.project-dialog::backdrop {
+		background: rgba(33, 29, 24, 0.28);
+		backdrop-filter: blur(4px);
+	}
+
+	.project-dialog h3 {
+		margin-bottom: 14px;
+		font-size: clamp(2rem, 5vw, 3.25rem);
+	}
+
+	.project-dialog p:not(.eyebrow) {
+		color: var(--muted);
+		font-size: 1.02rem;
+	}
+
+	.project-preview-tools {
+		margin: 24px 0 0;
+		padding-top: 16px;
+		border-top: 1px solid var(--line);
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+
+	.experience-list {
+		display: grid;
+		gap: 12px;
+	}
+
+	.experience-card {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(170px, 0.45fr) minmax(0, 1fr);
+		gap: 28px;
+		padding: 24px;
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		overflow: hidden;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			transform 180ms ease;
+	}
+
+	.experience-card::after {
+		content: "";
+		position: absolute;
+		inset: auto 24px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.experience-card:hover {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		transform: translateY(-2px);
+	}
+
+	.experience-card:hover::after {
+		transform: scaleX(1);
+	}
+
+	.experience-meta {
+		display: grid;
+		align-content: start;
+		gap: 8px;
+		color: var(--muted);
+		font-size: 0.82rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.experience-card h3 {
+		margin-bottom: 8px;
+		font-size: clamp(1.35rem, 2.5vw, 2rem);
+	}
+
+	.experience-company {
+		margin-bottom: 16px;
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+
+	.experience-card ul {
+		display: grid;
+		gap: 8px;
+		margin: 0;
+		padding-left: 18px;
+		color: var(--muted);
+	}
+
+	.design-heading {
+		max-width: 860px;
+	}
+
+	.design-intro {
+		max-width: 720px;
+		color: var(--muted);
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.design-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 12px;
+		align-items: stretch;
+	}
+
+	.design-item {
+		position: relative;
+		display: grid;
+		grid-template-rows: auto auto 1fr auto;
+		gap: 12px;
+		min-height: 236px;
+		margin: 0;
+		padding: 20px;
+		color: var(--text);
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		overflow: hidden;
+		font: inherit;
+		text-align: left;
+		cursor: pointer;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			transform 180ms ease,
+			box-shadow 180ms ease;
+	}
+
+	.design-label {
+		margin: 0;
+		color: var(--accent);
+		font-size: 0.76rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.design-item strong {
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(1.35rem, 2vw, 1.75rem);
+		font-weight: 500;
+		line-height: 1.2;
+	}
+
+	.design-description {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.98rem;
+		line-height: 1.55;
+	}
+
+	.design-action {
+		align-self: end;
+		color: var(--accent-dark);
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.design-item::after {
+		content: "";
+		position: absolute;
+		inset: auto 20px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.design-item:hover,
+	.design-item:focus-visible {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		outline: 0;
+		transform: translateY(-2px);
+	}
+
+	.design-item:hover::after,
+	.design-item:focus-visible::after {
+		transform: scaleX(1);
+	}
+
+	.design-dialog {
+		width: min(calc(100% - 32px), 560px);
+		max-height: calc(100dvh - 32px);
+		padding: 0;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		box-shadow: 0 24px 80px rgba(33, 29, 24, 0.22);
+		color: var(--text);
+		overflow: auto;
+		animation: dialog-in 180ms ease both;
+	}
+
+	.design-dialog::backdrop {
+		background: rgba(33, 29, 24, 0.24);
+		backdrop-filter: blur(4px);
+	}
+
+	.design-dialog .dialog-close {
+		margin: 16px 18px 0 0;
+	}
+
+	.design-preview-copy {
+		padding: 24px 26px 18px;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.design-preview-copy h3 {
+		margin-bottom: 10px;
+		font-size: clamp(1.8rem, 5vw, 2.65rem);
+	}
+
+	.design-preview-copy p:last-child {
+		max-width: 680px;
+		margin-bottom: 0;
+		color: var(--muted);
+		font-size: 0.98rem;
+	}
+
+	.design-preview-frame {
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+		padding: 12px;
+		background: color-mix(in srgb, var(--background) 86%, var(--surface));
+	}
+
+	.design-preview-frame img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
+		border-radius: 6px;
+		background: var(--surface);
+		animation: preview-in 240ms ease both;
+	}
+
+	@keyframes dialog-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px) scale(0.985);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes preview-in {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.certification-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 10px;
+		margin-top: 24px;
+	}
+
+	.certification-item {
+		position: relative;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 34px minmax(0, 1fr);
+		gap: 12px;
+		align-items: start;
+		min-height: 126px;
+		padding: 16px;
+		color: var(--text);
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 4px;
+		font: inherit;
+		text-align: left;
+		cursor: pointer;
+		overflow: hidden;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			transform 180ms ease;
+	}
+
+	.certification-item::after {
+		content: "";
+		position: absolute;
+		inset: auto 16px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.certification-index,
+	.certification-item em {
+		color: var(--muted);
+		font-size: 0.82rem;
+		font-style: normal;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0;
+	}
+
+	.certification-index {
+		padding-top: 2px;
+	}
+
+	.certification-content {
+		display: grid;
+		gap: 7px;
+		min-width: 0;
+	}
+
+	.certification-item strong {
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(1.15rem, 2vw, 1.38rem);
+		font-weight: 500;
+		line-height: 1.12;
+		color: var(--text);
+	}
+
+	.certification-item small {
+		color: var(--muted);
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+
+	.certification-item:hover,
+	.certification-item:focus-visible {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		transform: translateY(-2px);
+	}
+
+	.certification-item:hover::after,
+	.certification-item:focus-visible::after {
+		transform: scaleX(1);
+	}
+
+	.certification-item:hover strong,
+	.certification-item:focus-visible strong {
+		color: var(--accent-dark);
+	}
+
+	.certification-item:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 6px;
+	}
+
+	.section-copy {
+		color: var(--muted);
+		font-size: 1.08rem;
+	}
+
+	.section-copy p:last-child,
+	.contact-section p:last-of-type,
+	.resume-card p {
+		margin-bottom: 0;
+	}
+
+	.section-heading {
+		max-width: 760px;
+		margin-bottom: 36px;
+	}
+
+	.skills-list {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 10px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.skills-list li {
+		position: relative;
+		min-height: 56px;
+		display: flex;
+		align-items: center;
+		gap: 11px;
+		padding: 14px 16px;
+		background:
+			linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--surface) 92%, var(--background)),
+				color-mix(in srgb, var(--surface) 72%, transparent)
+			);
+		border: 1px solid var(--line);
+		border-radius: 4px;
+		color: var(--accent-dark);
+		font-weight: 700;
+		overflow: hidden;
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			box-shadow 180ms ease,
+			color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.skills-list li::after {
+		content: "";
+		position: absolute;
+		inset: auto 14px 0;
+		height: 2px;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.skills-list li:hover {
+		background: color-mix(in srgb, var(--surface) 88%, var(--background));
+		border-color: var(--accent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
+		color: var(--text);
+		transform: translateY(-2px);
+	}
+
+	.skills-list li:hover::after {
+		transform: scaleX(1);
+	}
+
+	.skill-mark {
+		display: inline-grid;
+		place-items: center;
+		width: 30px;
+		height: 30px;
+		flex: 0 0 auto;
+		color: var(--inverse-text);
+		background: var(--inverse);
+		border: 1px solid color-mix(in srgb, var(--inverse) 76%, var(--line));
+		border-radius: 50%;
+		font-size: 0.66rem;
+		font-weight: 800;
+		letter-spacing: 0;
+		line-height: 1;
+		box-shadow: 0 8px 20px color-mix(in srgb, var(--text) 8%, transparent);
+		transition:
+			background 180ms ease,
+			color 180ms ease,
+			transform 180ms ease,
+			box-shadow 180ms ease;
+	}
+
+	.skill-name {
+		min-width: 0;
+	}
+
+	.skills-list li:hover .skill-mark {
+		background: var(--accent-dark);
+		color: var(--background);
+		transform: rotate(-4deg) scale(1.04);
+		box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 26%, transparent);
+	}
+
+	.resume-card p,
+	.contact-section p {
+		max-width: 680px;
+		color: var(--muted);
+		font-size: 1.08rem;
+	}
+
+	.credential-dialog {
+		width: min(calc(100% - 32px), 620px);
+		padding: 30px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		box-shadow: 0 24px 80px rgba(33, 29, 24, 0.18);
+		color: var(--text);
+	}
+
+	.credential-dialog::backdrop {
+		background: rgba(33, 29, 24, 0.28);
+		backdrop-filter: blur(3px);
+	}
+
+	.dialog-close {
+		float: right;
+		padding: 0;
+		color: var(--muted);
+		background: transparent;
+		border: 0;
+		font: inherit;
+		cursor: pointer;
+	}
+
+	.dialog-close:hover {
+		color: var(--text);
+	}
+
+	.credential-dialog h3 {
+		margin-bottom: 12px;
+		font-size: clamp(2rem, 5vw, 3.35rem);
+	}
+
+	.credential-meta,
+	#credential-detail {
+		color: var(--muted);
+		font-size: 1.02rem;
+	}
+
+	.credential-preview {
+		display: grid;
+		grid-template-columns: 96px minmax(0, 1fr);
+		gap: 18px;
+		align-items: center;
+		margin: 24px 0;
+		padding: 18px;
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		background: var(--background);
+	}
+
+	.credential-preview span {
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+		border: 1px solid var(--line);
+		border-radius: 50%;
+		color: var(--accent-dark);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.35rem;
+		font-weight: 700;
+	}
+
+	.credential-preview p {
+		margin: 0;
+		color: var(--text);
+		font-size: 1.08rem;
+		font-weight: 700;
+	}
+
+	.dialog-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 24px;
+	}
+
+	code {
+		padding: 2px 5px;
+		border: 1px solid var(--line);
+		border-radius: 4px;
+		background: var(--surface);
+		font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+		font-size: 0.9em;
+	}
+
+	.contact-section {
+		padding-bottom: 104px;
+	}
+
+	.contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+		margin-top: 14px;
+	}
+
+	.social-link {
+		width: 46px;
+		height: 46px;
+		display: inline-grid;
+		place-items: center;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 4px;
+		color: var(--text);
+		transition:
+			background 180ms ease,
+			border-color 180ms ease,
+			color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.social-link svg {
+		width: 22px;
+		height: 22px;
+		fill: currentColor;
+	}
+
+	.email-link {
+		background: var(--text);
+		border-color: var(--text);
+		color: var(--surface);
+	}
+
+	.social-link:hover,
+	.social-link:focus-visible {
+		background: var(--inverse);
+		border-color: var(--inverse);
+		color: var(--inverse-text);
+		outline: 0;
+		transform: translateY(-1px);
+	}
+
+	.social-link.email-link:hover,
+	.social-link.email-link:focus-visible {
+		background: var(--accent-dark);
+		border-color: var(--accent-dark);
+		color: var(--surface);
+	}
+
+	.site-footer {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+		padding: 28px 0 40px;
+		color: var(--muted);
+		font-size: 0.95rem;
+	}
+
+	.site-footer p {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 820px) {
+		main,
+		.site-footer {
+			width: min(calc(100% - 28px), var(--max-width));
+		}
+
+		.site-header {
+			align-items: flex-start;
+			flex-direction: column;
+			padding: 18px 14px;
+		}
+
+		.nav-links {
+			width: 100%;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 12px;
+			font-size: 0.9rem;
+		}
+
+		.hero {
+			min-height: auto;
+			padding: 72px 0 56px;
+		}
+
+		h1 {
+			font-size: clamp(3rem, 16vw, 5.2rem);
+		}
+
+		.section {
+			padding: 64px 0;
+		}
+
+		.intro-grid,
+		.design-grid,
+		.experience-card {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+
+		.design-item {
+			grid-row: auto;
+			min-height: 214px;
+		}
+
+		.skills-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.certification-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.site-footer {
+			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 520px) {
+		body {
+			font-size: 15px;
+		}
+
+		.nav-links {
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+
+		.hero-actions,
+		.hero-actions .button,
+		.contact-actions .button,
+		.dialog-actions .button {
+			width: 100%;
+		}
+
+		.contact-actions {
+			align-items: stretch;
+		}
+
+		.social-link {
+			flex: 1;
+			min-width: 72px;
+		}
+
+		.skills-list {
+			grid-template-columns: 1fr;
+		}
+
+		.certification-list {
+			grid-template-columns: 1fr;
+		}
+
+		.resume-card,
+		.certifications-card,
+		.credential-dialog {
+			padding: 22px;
+		}
+
+		.credential-preview {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
