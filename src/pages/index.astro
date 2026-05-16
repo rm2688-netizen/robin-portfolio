@@ -325,7 +325,7 @@ const designPortfolio = [
 			<section class="hero" aria-labelledby="hero-title">
 				<p class="eyebrow">Personal Portfolio</p>
 				<h1 id="hero-title">
-					Engineering with clarity, curiosity, and intention.
+					Engineering with <span class="hero-typewriter"><span data-typewriter-text>"clarity"</span><span class="typewriter-cursor" aria-hidden="true">|</span></span>
 				</h1>
 				<p class="hero-copy">
 					I design complex mechanical systems, solve real-world problems, and build experiences that balance functionality with simplicity.
@@ -347,27 +347,30 @@ const designPortfolio = [
 					</figure>
 				</div>
 				<div class="section-copy about-copy">
-					<p class="eyebrow">About</p>
-					<h2 id="about-title">Mechanical engineer focused on thoughtful design, manufacturable details, and better systems.</h2>
-					<p>
-						I work at the intersection of mechanical design, manufacturing, and analysis,
-						turning technical requirements into clear, buildable solutions. My background
-						includes CAD, GD&T, tolerance stack-up analysis, FEA, root cause analysis, lean
-						manufacturing, and continuous improvement.
-					</p>
-					<p>
-						I'm drawn to engineering work where precision and practicality have to meet:
-						designs that are clean on screen, sensible to manufacture, and easy for teams to
-						understand. Curiosity for science and technology keeps me moving, but useful,
-						well-communicated outcomes are what keep the work grounded.
-					</p>
+					<canvas class="about-particles" data-about-particles aria-hidden="true"></canvas>
+					<div class="about-copy-content">
+						<p class="eyebrow">About</p>
+						<h2 id="about-title">Mechanical engineer focused on thoughtful designs.</h2>
+						<p>
+							I work at the intersection of mechanical design, manufacturing, and analysis,
+							turning technical requirements into clear, buildable solutions. My background
+							includes CAD, GD&T, tolerance stack-up analysis, FEA, root cause analysis, lean
+							manufacturing, and continuous improvement.
+						</p>
+						<p>
+							I'm drawn to engineering work where precision and practicality have to meet:
+							designs that are clean on screen, sensible to manufacture, and easy for teams to
+							understand. Curiosity for science and technology keeps me moving, but useful,
+							well-communicated outcomes are what keep the work grounded.
+						</p>
+					</div>
 				</div>
 			</section>
 
 			<section class="section experience-section" id="experience" aria-labelledby="experience-title">
 				<div class="section-heading">
 					<p class="eyebrow">Experience</p>
-					<h2 id="experience-title">Work experience across design, quality, analysis, and manufacturing.</h2>
+					<h2 id="experience-title">Work experience across design, quality, and manufacturing.</h2>
 				</div>
 
 				<div class="experience-list">
@@ -447,10 +450,10 @@ const designPortfolio = [
 				<div class="section-heading design-heading">
 					<p class="eyebrow">Design</p>
 					<h2 id="design-title">A focused selection of CAD renderings.</h2>
-					<p class="design-intro">
+					<!-- <p class="design-intro">
 						This section draws from the design portfolio notes and showcases a tighter set of
 						mechanical renders chosen for clarity, finish, and professional presentation.
-					</p>
+					</p>end comment -->
 				</div>
 
 				<div class="design-grid">
@@ -547,7 +550,7 @@ const designPortfolio = [
 			<section class="section resume-section" id="resume" aria-labelledby="resume-title">
 				<div class="section-heading">
 					<p class="eyebrow">Resume</p>
-					<h2 id="resume-title">A concise PDF version of my engineering background.</h2>
+					<h2 id="resume-title">A PDF version of my engineering background.</h2>
 				</div>
 				<article class="resume-card">
 					<p>
@@ -603,6 +606,8 @@ const designPortfolio = [
 			const requestLink = document.querySelector("[data-request-permission]");
 			const closeButton = document.querySelector("[data-close-dialog]");
 			const themeToggle = document.querySelector("[data-theme-toggle]");
+			const typewriterText = document.querySelector("[data-typewriter-text]");
+			const aboutParticlesCanvas = document.querySelector("[data-about-particles]");
 			const designDialog = document.querySelector("#design-dialog");
 			const designPreviewTitle = document.querySelector("#design-preview-title");
 			const designPreviewLabel = document.querySelector("#design-preview-label");
@@ -633,6 +638,174 @@ const designPortfolio = [
 				const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
 				setTheme(nextTheme);
 			});
+
+			if (typewriterText instanceof HTMLElement) {
+				const phrases = ['clarity', 'curiosity', 'intention'];
+				let phraseIndex = 0;
+				let letterIndex = 0;
+				let deleting = false;
+				let pauseTicks = 0;
+
+				setInterval(() => {
+					const currentPhrase = phrases[phraseIndex] ?? "";
+
+					if (pauseTicks > 0) {
+						pauseTicks -= 1;
+						return;
+					}
+
+					if (!deleting) {
+						letterIndex += 1;
+						typewriterText.textContent = currentPhrase.slice(0, letterIndex);
+
+						if (letterIndex >= currentPhrase.length) {
+							deleting = true;
+							pauseTicks = 12;
+						}
+						return;
+					}
+
+					letterIndex -= 1;
+					typewriterText.textContent = currentPhrase.slice(0, letterIndex);
+
+					if (letterIndex <= 0) {
+						deleting = false;
+						phraseIndex = (phraseIndex + 1) % phrases.length;
+						pauseTicks = 4;
+					}
+				}, 90);
+			}
+
+			if (aboutParticlesCanvas instanceof HTMLCanvasElement) {
+				const context = aboutParticlesCanvas.getContext("2d");
+				const particleCount = 60;
+				const particleRadius = 2;
+				const linkDistance = 120;
+				const particles = [];
+				let canvasWidth = 0;
+				let canvasHeight = 0;
+				let dpr = 1;
+
+				const parseColorToRgb = (value) => {
+					if (value.startsWith("#")) {
+						let hex = value.slice(1);
+						if (hex.length === 3) hex = hex.split("").map((char) => char + char).join("");
+						const parsed = Number.parseInt(hex, 16);
+						if (Number.isNaN(parsed)) return { r: 125, g: 79, b: 54 };
+						return {
+							r: (parsed >> 16) & 255,
+							g: (parsed >> 8) & 255,
+							b: parsed & 255,
+						};
+					}
+
+					const matches = value.match(/\d+(\.\d+)?/g);
+					if (!matches || matches.length < 3) return { r: 125, g: 79, b: 54 };
+					return {
+						r: Number.parseFloat(matches[0] ?? "125"),
+						g: Number.parseFloat(matches[1] ?? "79"),
+						b: Number.parseFloat(matches[2] ?? "54"),
+					};
+				};
+
+				const accentValue =
+					getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#7d4f36";
+				const accentRgb = parseColorToRgb(accentValue);
+
+				const createParticle = () => ({
+					x: Math.random() * Math.max(canvasWidth, 1),
+					y: Math.random() * Math.max(canvasHeight, 1),
+					vx: (Math.random() - 0.5) * 0.34,
+					vy: (Math.random() - 0.5) * 0.34,
+				});
+
+				const resizeCanvas = () => {
+					const bounds = aboutParticlesCanvas.getBoundingClientRect();
+					canvasWidth = bounds.width;
+					canvasHeight = bounds.height;
+					dpr = window.devicePixelRatio || 1;
+
+					aboutParticlesCanvas.width = Math.max(Math.floor(canvasWidth * dpr), 1);
+					aboutParticlesCanvas.height = Math.max(Math.floor(canvasHeight * dpr), 1);
+
+					if (context) context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+					if (particles.length === 0) {
+						for (let index = 0; index < particleCount; index += 1) {
+							particles.push(createParticle());
+						}
+						return;
+					}
+
+					particles.forEach((particle) => {
+						particle.x = Math.min(Math.max(particle.x, 0), Math.max(canvasWidth, 1));
+						particle.y = Math.min(Math.max(particle.y, 0), Math.max(canvasHeight, 1));
+					});
+				};
+
+				const animateParticles = () => {
+					if (!context) return;
+
+					context.clearRect(0, 0, canvasWidth, canvasHeight);
+
+					for (let index = 0; index < particles.length; index += 1) {
+						const particle = particles[index];
+						if (!particle) continue;
+
+						particle.x += particle.vx;
+						particle.y += particle.vy;
+
+						if (particle.x <= 0 || particle.x >= canvasWidth) particle.vx *= -1;
+						if (particle.y <= 0 || particle.y >= canvasHeight) particle.vy *= -1;
+
+						particle.x = Math.min(Math.max(particle.x, 0), canvasWidth);
+						particle.y = Math.min(Math.max(particle.y, 0), canvasHeight);
+					}
+
+					context.strokeStyle = `rgba(${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}, 0.14)`;
+					context.lineWidth = 1;
+
+					for (let i = 0; i < particles.length; i += 1) {
+						const first = particles[i];
+						if (!first) continue;
+						for (let j = i + 1; j < particles.length; j += 1) {
+							const second = particles[j];
+							if (!second) continue;
+
+							const dx = first.x - second.x;
+							const dy = first.y - second.y;
+							const distance = Math.hypot(dx, dy);
+							if (distance > linkDistance) continue;
+
+							const opacity = (1 - distance / linkDistance) * 0.2;
+							context.strokeStyle = `rgba(${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}, ${opacity})`;
+							context.beginPath();
+							context.moveTo(first.x, first.y);
+							context.lineTo(second.x, second.y);
+							context.stroke();
+						}
+					}
+
+					context.fillStyle = `rgba(${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}, 0.32)`;
+					particles.forEach((particle) => {
+						context.beginPath();
+						context.arc(particle.x, particle.y, particleRadius, 0, Math.PI * 2);
+						context.fill();
+					});
+
+					requestAnimationFrame(animateParticles);
+				};
+
+				resizeCanvas();
+				animateParticles();
+
+				if ("ResizeObserver" in window) {
+					const observer = new ResizeObserver(() => resizeCanvas());
+					observer.observe(aboutParticlesCanvas);
+				} else {
+					window.addEventListener("resize", resizeCanvas);
+				}
+			}
 
 			document.querySelectorAll(".project-postcard").forEach((button) => {
 				button.addEventListener("click", () => {
@@ -1020,6 +1193,30 @@ const designPortfolio = [
 		line-height: 1.7;
 	}
 
+	.hero-typewriter {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 6px;
+		min-width: 11ch;
+	}
+
+	.typewriter-cursor {
+		display: inline-block;
+		line-height: 1;
+		animation: blink-cursor 0.95s steps(1, end) infinite;
+	}
+
+	@keyframes blink-cursor {
+		0%,
+		45% {
+			opacity: 1;
+		}
+		46%,
+		100% {
+			opacity: 0;
+		}
+	}
+
 	.hero-actions {
 		display: flex;
 		flex-wrap: wrap;
@@ -1064,8 +1261,14 @@ const designPortfolio = [
 	}
 
 	.section {
+		scroll-margin-top: 0;
 		padding: 88px 0;
 		border-bottom: 1px solid var(--line);
+	}
+
+	.hero:has(+ .section:target),
+	.section:has(+ .section:target) {
+		border-bottom-color: transparent;
 	}
 
 	.intro-grid {
@@ -1099,7 +1302,7 @@ const designPortfolio = [
 			);
 		border: 1px solid var(--line);
 		border-radius: 6px;
-		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 8%, transparent);
+		box-shadow: 0 18px 44px color-mix(in srgb, var(--text) 10%, transparent);
 	}
 
 	.about-portrait::after {
@@ -1116,7 +1319,7 @@ const designPortfolio = [
 		display: block;
 		object-fit: cover;
 		border-radius: 4px;
-		filter: saturate(0.9) contrast(1.03);
+		filter: saturate(0.98) contrast(1.02);
 	}
 
 	.about-portrait figcaption {
@@ -1142,11 +1345,28 @@ const designPortfolio = [
 	}
 
 	.about-copy {
+		position: relative;
 		max-width: 720px;
+		overflow: hidden;
+	}
+
+	.about-copy-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.about-particles {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		pointer-events: none;
 	}
 
 	.about-copy h2 {
 		margin-bottom: 24px;
+		color: var(--accent-dark);
 		font-size: clamp(2rem, 4.2vw, 3.65rem);
 	}
 
@@ -1162,11 +1382,11 @@ const designPortfolio = [
 	}
 
 	.design-section {
-		padding-top: 74px;
+		padding-top: 88px;
 	}
 
 	.certifications-section {
-		padding-top: 74px;
+		padding-top: 88px;
 	}
 
 	.resume-card,
@@ -1991,6 +2211,7 @@ const designPortfolio = [
 		}
 
 		.section {
+			scroll-margin-top: 104px;
 			padding: 64px 0;
 		}
 
@@ -1999,6 +2220,22 @@ const designPortfolio = [
 		.experience-card {
 			grid-template-columns: 1fr;
 			gap: 20px;
+		}
+
+		.about-layout {
+			gap: 32px;
+		}
+
+		.about-portrait-column {
+			justify-content: center;
+		}
+
+		.about-portrait {
+			width: min(280px, 100%);
+		}
+
+		.about-copy h2 {
+			font-size: clamp(2rem, 9vw, 3.1rem);
 		}
 
 		.design-item {
@@ -2027,6 +2264,19 @@ const designPortfolio = [
 		.nav-links {
 			flex-wrap: wrap;
 			justify-content: flex-start;
+		}
+
+		.section {
+			scroll-margin-top: 140px;
+		}
+
+		.about-portrait {
+			width: min(250px, 100%);
+		}
+
+		.about-copy p:not(.eyebrow) {
+			font-size: 1rem;
+			line-height: 1.7;
 		}
 
 		.hero-actions,
