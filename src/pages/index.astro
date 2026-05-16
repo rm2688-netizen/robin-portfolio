@@ -671,6 +671,32 @@ const designPortfolio = [
 				setTheme(nextTheme);
 			});
 
+			const siteHeader = document.querySelector(".site-header");
+			let lastScrollY = window.scrollY;
+
+			const updateMobileHeader = () => {
+				if (!siteHeader) return;
+				if (window.innerWidth > 820) {
+					siteHeader.classList.remove("scrolling-down");
+					lastScrollY = window.scrollY;
+					return;
+				}
+
+				const currentScroll = window.scrollY;
+				if (currentScroll <= 32) {
+					siteHeader.classList.remove("scrolling-down");
+				} else if (currentScroll > lastScrollY + 4) {
+					siteHeader.classList.add("scrolling-down");
+				} else if (currentScroll < lastScrollY - 4) {
+					siteHeader.classList.remove("scrolling-down");
+				}
+				lastScrollY = currentScroll;
+			};
+
+			window.addEventListener("scroll", updateMobileHeader, { passive: true });
+			window.addEventListener("resize", updateMobileHeader);
+			updateMobileHeader();
+
 			if (typewriterText instanceof HTMLElement) {
 				const phrases = ['clarity', 'curiosity', 'intention'];
 				let phraseIndex = 0;
@@ -2380,13 +2406,23 @@ const designPortfolio = [
 	@media (max-width: 820px) {
 		main,
 		.site-footer {
-			width: min(calc(100% - 28px), var(--max-width));
+			width: 100%;
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 0 16px;
 		}
 
 		.site-header {
-			align-items: flex-start;
-			flex-direction: column;
-			padding: 18px 14px;
+			align-items: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+			padding: 18px 16px;
+			transition: padding 180ms ease;
+		}
+
+		.site-header.scrolling-down {
+			padding-top: 12px;
+			padding-bottom: 12px;
 		}
 
 		.nav-links {
@@ -2395,6 +2431,31 @@ const designPortfolio = [
 			flex-wrap: wrap;
 			gap: 12px;
 			font-size: 0.9rem;
+			transition: opacity 180ms ease, transform 180ms ease, max-height 180ms ease;
+		}
+
+		.site-header.scrolling-down .nav-links {
+			display: none;
+			opacity: 0;
+			transform: translateY(-8px);
+			max-height: 0;
+			overflow: hidden;
+			pointer-events: none;
+		}
+
+		.hero,
+		.section-heading,
+		.hero-actions {
+			text-align: center;
+		}
+
+		.hero-actions {
+			justify-content: center;
+		}
+
+		.hero-copy {
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		.hero {
@@ -2507,6 +2568,41 @@ const designPortfolio = [
 
 		.credential-preview {
 			grid-template-columns: 1fr;
+		}
+
+		.tesseract-mark {
+			filter: none;
+			box-shadow: none;
+		}
+
+		.about-portrait,
+		.project-postcard,
+		.design-item,
+		.experience-card,
+		.certification-item,
+		.skills-list li,
+		.resume-card,
+		.social-link {
+			box-shadow: none;
+		}
+
+		.about-portrait:hover,
+		.project-postcard:hover,
+		.project-postcard:focus-visible,
+		.design-item:hover,
+		.design-item:focus-visible,
+		.experience-card:hover,
+		.certification-item:hover,
+		.certification-item:focus-visible,
+		.skills-list li:hover,
+		.social-link:hover,
+		.social-link:focus-visible,
+		.resume-card:hover,
+		.resume-card:focus-visible {
+			transform: none;
+			box-shadow: none;
+			border-color: var(--line);
+			background: var(--surface);
 		}
 	}
 </style>
