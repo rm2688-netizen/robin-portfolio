@@ -1407,6 +1407,13 @@ const designPortfolio = [
 		inset: auto 18px 0;
 		height: 2px;
 		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 180ms ease;
+	}
+
+	.about-portrait:hover::after {
+		transform: scaleX(1);
 	}
 
 	.about-portrait img {
