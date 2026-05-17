@@ -1,18 +1,25 @@
 ---
 const projects = [
 	{
-		title: "CFD and Thermal Simulation Studies",
-		type: "CFD and Thermal Simulation",
-		description: [
-			"The fluid flow simulation of a Formula SAE car focused on aerodynamic behavior, mesh sensitivity, and turbulence-model comparison. The study used CFD to understand airflow trends around the vehicle and show how computational modeling can support design decisions for larger moving bodies.",
-			"The thermal performance study evaluated a novel heat sink against conventional and market-available heat sinks using ANSYS. It compared cooling efficiency and heat-transfer behavior to understand how geometry can influence thermal management performance.",
-		],
-		tools: "CFD / ANSYS Thermal Analysis / Heat-Sink Performance / Mesh Sensitivity",
+		title: "Fluid Flow Simulation of a Formula SAE Car",
+		type: "CFD Study",
+		description:
+			"Fluid dynamics simulation of a Formula SAE car focused on aerodynamic behavior, mesh sensitivity, and turbulence-model comparison. The study used CFD to understand airflow trends around the vehicle and show how computational modeling can support design decisions for larger moving bodies.",
+		tools: "CFD / Turbulence Models / Mesh Sensitivity",
 		viewMore: [
 			{
 				label: "Fluid dynamics simulation report",
 				href: encodeURI("/Projects/Formula SAE_Fluid Dynamics Simulation.pdf"),
 			},
+		],
+	},
+	{
+		title: "Thermal Performance of a Novel Heat Sink",
+		type: "Thermal Simulation",
+		description:
+			"Thermal simulation study evaluating a novel heat sink against conventional and market-available heat sinks using ANSYS. The work compared cooling efficiency and heat-transfer behavior to understand how geometry influences thermal management performance.",
+		tools: "ANSYS Thermal Analysis / Heat-Sink Performance / Thermal Management",
+		viewMore: [
 			{
 				label: "Heat sink performance report",
 				href: encodeURI("/Projects/Evaluating heat sink performance.pdf"),
@@ -57,6 +64,14 @@ const projects = [
 				href: encodeURI("/Projects/Electrochemical characterisation of Si anodes.pdf"),
 			},
 		],
+	},
+	{
+		title: "3D Robotic Fruit Picker",
+		type: "Prototype",
+		description:
+			"Designed and built a working robotic arm prototype through the Jed-I Gifted Engineering Program. The concept used RGB color sensing with Arduino and Python programming to identify oranges, pick them from a tree, and place them into a basket.",
+		tools: "Arduino / Python / RGB Sensors / Prototyping",
+		viewMore: [],
 	},
 	{
 		title: "3D Printing RC Car",
