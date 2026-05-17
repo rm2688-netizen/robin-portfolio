@@ -191,7 +191,7 @@ const experience = [
 
 const skills = [
 	{ name: "Mechanical design", mark: "ME" },
-	{ name: "CAD modeling", mark: "3D" },
+	{ name: "Onshape", mark: "ON" },
 	{ name: "GD&T", mark: "GD" },
 	{ name: "DFMA", mark: "DF" },
 	{ name: "FMEA", mark: "FM" },
@@ -1502,6 +1502,10 @@ const designPortfolio = [
 	.hero:has(+ .section:target),
 	.section:has(+ .section:target) {
 		border-bottom-color: transparent;
+	}
+
+	.experience-section {
+		border-bottom-color: var(--line);
 	}
 
 	.intro-grid {
